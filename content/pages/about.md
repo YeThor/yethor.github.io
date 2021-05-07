@@ -1,13 +1,35 @@
 ---
 title: "About me"
 template: "page"
-socialImage: "/media/image-2.jpg"
+socialImage: "photo.jpg"
 ---
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+4년차 FE 개발자 김예솔입니다. 리액트와 타입스크립트를 특히 좋아하며, 유연한 설계와 가독성 높은 코드를 지향합니다.
 
-![Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.](/media/image-2.jpg)
+2017년 네이버에 입사해 FE 개발자로서의 첫 발걸음을 내딛었습니다. 레스토랑 추천 모바일웹 서비스, 네이버 동영상 웹플레이어 개발에 참여했으며 이후 2021년 11번가로 자리를 옮겨 프론트엔드 영역을 개발하고 있습니다. FE 개발자가 된 이후 첫 3년간 프론트엔드 기술 습득과 기능 구현 유무에 집중했다면 앞으로의 3년은 성능 최적화, 유연한 설계 등 <strong>어떻게 프로덕트를 "잘" 만들 것인가</strong>에 집중하려고 합니다.
 
-*Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.*
+개발자로서의 성장과 개발 문화에 관심이 많으며, 기술에 대한 이야기를 공유하고 교류하는 것을 무척 좋아합니다! 제 트위터는 언제나 열려있으니, 소통을 원하신다면 언제든 블로그 좌측의 트위터 링크를 활용해주세요 :)
 
-Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+
+---
+
+## Experience
+#### 11번가 <sub><sup> (2021 ~ current) | Frontend Developer</sup></sub>
+- 웹, 모바일, 하이브리드 앱에서의 프론트엔드 영역 고도화 및 라이브 커머스 
+
+
+#### 네이버 <sub><sup> (2017 ~ 2020) | Frontend Developer</sup></sub>
+- 네이버 동영상 웹플레이어 신규 개발
+- 레스토랑 추천 리뷰 서비스 개발(대외비, 미출시)
+
+
+#### 네이버 여름 인턴쉽 <sub><sup> (2017.07 ~ 2017.08) | Intern </sup></sub>
+- 네이버 웨일 브라우저 익스텐션 개발 
+
+## Education
+
+- 고려대학교 컴퓨터학과 학부 졸업 (2011 ~ 2016)
+
+
+
+
