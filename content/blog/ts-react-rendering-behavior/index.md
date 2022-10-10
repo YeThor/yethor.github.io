@@ -20,8 +20,8 @@ _리액트 렌더링에 대한 디테일, 그리고 컨텍스트와 React-Redux�
   - 렌더링 과정 개요
   - Render 단계, Commit 단계
 - 리액트는 어떻게 렌더링을 다루는가
-  - 렌더 쌓아두기(Queuing)
-  - 표준 렌더 동작
+  - 큐에 렌더 넣기(Queuing Renders)
+  - 표준 렌더 동작(Standard Render Behavior)
   - 리액트 렌더링의 규칙
   - Metadata 컴포넌트와 Fibers
   - key와 재조정(Reconciliation)
@@ -90,3 +90,70 @@ React.createElement("button", {onClick}, "Click Me")
 > _리액트는 UI를 value화하는 것입니다. 핵심 원리는 UI가 문자열이나 배열같은 값이라는 것이죠. 당신은 그것을 변수에 저장할 수도 있고, 자바스크립트 제어 흐름에 따라 그것을 넘겨받고 사용할 수 있습니다. 이런 풍부한 표현력이 포인트죠 - DOM에 어떤 변화를 적용하는 것을 피하기 위해 비교하는게 아니라요._
 >
 > _거기다 항상 DOM을 뜻하는 것도 아닙니다. 예를 들면 `<Message recipientId={10} />` 은 DOM이 아니잖아요. 개념적으로 그것은 lazy 함수 호출을 의미합니다: `Message.bind(null, { recipientId: 10})`._
+
+### Render 단계, Commit 단계(Render and Commit Phases)
+
+리액트 팀은 개념적으로 렌더링을 두 단계로 나눴다:
+
+- Render 단계는 변화를 계산하고 컴포넌트를 렌더링하는 모든 작업을 포함한다.
+- Commit 단계는 DOM에 그러한 변화들을 실제로 적용하는 과정이다.
+
+리액트가 Commit 단계에서 DOM을 업데이트하고 나면, 요청된 DOM 노드와 컴포넌트 인스턴스를 가리키도록 모든 참조를 업데이트한다. 그 후 동기적으로 클래스 라이프사이클 메소드인 `componentDidMount`와 `componentDidUpdate`,그리고 `useLayoutEffect` 훅을 실행한다.
+리액트는 그 후 짧은 timeout을 두고 이 timeout이 끝나면, 모든 `useEffect` 훅을 실행한다. 이 단계는 "Passive Effects" 단계로도 알려져 있다.
+리액트 18에서는 [`useTransition`](https://github.com/reactwg/react-18/discussions/64)같은 "Concurrent Rendering"이 추가되었는데, 이는 브라우저가 이벤트를 처리할 때 Render 단계의 작업을 일시 정지할 수 있게 해준다. 리액트는 그 작업을 재개하거나, 버리거나, 나중에 적절하게 재계산할 수 있다. 한번 Render pass가 완료된 후에도 React는 한 단계에서 Commit 단계를 동기적으로 실행할 것이다.
+가장 중요한 부분은 "렌더링"이 "DOM 업데이트"와는 다르다는 것을 이해하는 것이다. 그리고 그 결과로 컴포넌트가 어떤 시각적 변화없이 렌더링될 수 있다는 것도. 리액트는 다음의 경우에 컴포넌트를 렌더링한다:
+
+- 컴포넌트는 지난번과 동일한 렌더 출력을 반환할 수 있다. 따라서 아무 변화도 필요하지 않다.
+- Concurrent Rendering에서 리액트는 컴포넌트를 여러번 업데이트하고 끝낼지도 모른다. 하지만 만약 다른 업데이트가 현재 완료된 작업을 무효화할 때마다 렌더 출력을 버린다.
+
+시각화를 돕기 위해, 아래 리액트 훅 flow 다이어그램을 보아라([source: Donovan West](https://github.com/donavon/hook-flow)):
+
+![React Hook Flow Diagram](hook-flow-west.png)
+
+추가적인 시각화를 보고 싶다면, 다음을 보아라:
+
+- [React hooks render/commit phase diagram](https://wavez.github.io/react-hooks-lifecycle/)
+  React class lifecycle methods diagram
+- [React class lifecycle methods diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+
+## 리액트는 어떻게 렌더링을 다루는가(How Does React Handle Renders)?
+
+### 큐에 렌더 넣기(Queuing Renders)
+
+최초 렌더가 완료된 후, 리액트로 하여금 리렌더를 큐에 넣을 수 있는 여러 방법이 있다.
+
+- 함수 컴포넌트:
+  - `useState` setters
+  - `useReducer` dispatches
+- 클래스 컴포넌트:
+  - `this.setState()`
+  - `this.forceUpdate()`
+- 그 외:
+  - ReactDOM 최상위 레벨 메소드 `render(<App/>)` 재호출(이는 루트 컴포넌트에서 `forceUpdate()`를 호출하는 것과 동일하다)
+  - 새 `useSyncExternalStore` 훅으로부터 트리거된 업데이트들
+
+함수 컴포넌트는 `forceUpdate` 메소드가 없음을 기억해라. 하지만 언제나 카운터를 증가시키는 `useReducer` 훅을 사용함으로써, 동일한 동작을 얻어낼 수 있다.
+
+```js
+const [, forceRender] = useReducer(c => c + 1, 0)
+```
+
+### 표준 렌더 동작(Standard Render Behavior)
+
+다음을 기억하는 것은 아주 중요하다:
+리액트의 기본 동작은 부모 컴포넌트가 렌더될 때 그 안에 있는 모든 자식 컴포넌트를 재귀적으로 렌더하는 것이다!
+
+예를 들어, `A > B > C > D` 라는 컴포넌트 트리가 있다고 해보자. 그리고 우리는 이미 그들을 페이지에 보여주고 있다. 사용자가 `B` 안에 있는, 카운터를 증가시키는 버튼을 클릭한다:
+
+- 우리는 `B` 안에 있는 `setState()`를 호출한다. 이는 B의 리렌더를 큐에 넣는다.
+- 리액트는 트리 최상위에서부터 렌더 패스(render pass)를 시작한다
+- 리액트는 `A`에 업데이트가 필요하다고 표시되어있지 않은 것을 본다. 그리고 지나친다.
+- 리액트는 `B`에 업데이트가 필요하다고 표시되어있는 것을 보고 렌더링한다. `B`는 지난번과 마찬가지로 `<C/>`를 리턴한다.
+- `C`는 본래 업데이트가 필요하다고 표시되어 있지 않았다. 그러나, 부모 `B`가 렌더되었으므로 리액트는 이제 아래로 내려가며 `C` 또한 렌더링한다. `C`ㄴ는 다시 `<D/>`를 리턴한다.
+- `D` 또한 렌더링이 필요하다고 표시되어있지 않았으나, 부모 `C`가 렌더되었으므로 리액트는 아래로 내려가며 `D` 또한 렌더링한다.
+
+이걸 다른 방식으로 말하자면:
+한 컴포넌트를 렌더링한다는 것은, 기본적으로, 그 안에 있는 _모든_ 컴포넌트들도 렌더링하게 만든다!
+또한, 다른 중요한 점이 있다:
+보통의 렌더링에서, 리액트는 "prop이 바뀌었는지 아닌지" 신경쓰지 않는다 - 부모가 렌더되었으면 무조건적으로 자식 컴포넌트를 렌더링할 것이다!
+이는 당신의 루트 `<App>` 컴포넌트에서 `setState()`를 호출하는 것이, 비록 앱의 동작을 대체하는 변화가 없더라도, 컴포넌트 트리 안에 있는 모든 컴포넌트를 리액트가 하나 하나 다 리렌더할거란 뜻이다. 결국, 리액트 본래의 sales pitches 중 하나는 ["매 업데이트마다 전체 앱을 다시 그리는 것처럼 행동하라"](https://www.slideshare.net/floydophone/react-preso-v2)이다.
