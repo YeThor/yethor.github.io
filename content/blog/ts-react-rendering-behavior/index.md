@@ -14,14 +14,14 @@ _리액트 렌더링에 대한 디테일, 그리고 컨텍스트와 React-Redux�
 
 # 목차
 
-- 렌더링이란 무엇인가?
-  - 렌더링 과정 개요
-  - Render 단계, Commit 단계
-- 리액트는 어떻게 렌더링을 다루는가
-  - 큐에 렌더 넣기(Queuing Renders)
-  - 표준 렌더 동작(Standard Render Behavior)
-  - 리액트 렌더링의 규칙
-  - Metadata 컴포넌트와 Fibers
+- [렌더링이란 무엇인가?](/ts-react-rendering-behavior/#렌더링이란-무엇인가what-is-rendering)
+  - [렌더링 과정 개요](/ts-react-rendering-behavior/#렌더링-과정-개요rendering-process-overview)
+  - [Render 단계, Commit 단계](/ts-react-rendering-behavior/#render-단계-commit-단계render-and-commit-phases)
+- [리액트는 어떻게 렌더링을 다루는가](/ts-react-rendering-behavior/#리액트는-어떻게-렌더링을-다루는가how-does-react-handle-renders)
+  - [큐에 렌더 넣기(Queuing Renders)](/ts-react-rendering-behavior/#큐에-렌더-넣기queuing-renders)
+  - [표준 렌더 동작(Standard Render Behavior)](/ts-react-rendering-behavior/#표준-렌더-동작standard-render-behavior)
+  - [리액트 렌더링의 규칙](/ts-react-rendering-behavior/#리액트-렌더링의-규칙-rules-of-react-rendering)
+  - [컴포넌트 메타데이터와 Fibers](/ts-react-rendering-behavior/#컴포넌트-메타데이터와-fibers-component-metadata-and-fibers)
   - key와 재조정(Reconciliation)
   - Batching과 Timing 렌더링
   - 비동기적 렌더링, 클로저, 그리고 상태 스냅샷(State Snapshots)
