@@ -106,7 +106,7 @@ React.createElement("button", {onClick}, "Click Me")
 
 시각화를 돕기 위해, 아래 리액트 훅 flow 다이어그램을 보아라([source: Donovan West](https://github.com/donavon/hook-flow)):
 
-![React Hook Flow Diagram](hook-flow-west.png)
+![React Hook Flow Diagram](./hook-flow-west.jpg)
 
 추가적인 시각화를 보고 싶다면, 다음을 보아라:
 
