@@ -1,12 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "blog-yesol",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
+  "description": "A blog with articles about web developments",
+  "version": "1.0.0",
+  "author": "Yesol Kim <kysloves@naver.com>",
   "dependencies": {
     "gatsby": "^4.24.1",
     "gatsby-plugin-feed": "^4.24.0",
