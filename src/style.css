@@ -54,12 +54,18 @@
   --fontSize-5: 2.074rem;
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
-  --color-primary: #005b99;
-  --color-text: #2e353f;
-  --color-text-light: #4f5969;
-  --color-heading: #1a202c;
-  --color-heading-black: black;
+  --color-primary: #ffffff;
+  --color-secondary: darkgoldenrod;
+  --color-text: #eeeef0;
+  --color-text-light: #d6d7d7;
+  --color-heading: #ffffff;
+  --color-heading-black: white;
   --color-accent: #d1dce5;
+  --color-link: #5a94c4;
+  --color-bullet: darkgoldenrod;
+  --color-bullet-link: rgb(234, 196, 100);
+
+  --background-color: rgb(53, 54, 58);
 }
 
 /* HTML elements */
@@ -81,6 +87,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
   color: var(--color-text);
+  background-color: var(--background-color);
 }
 
 footer {
@@ -153,6 +160,7 @@ h3 > a,
 h4 > a,
 h5 > a,
 h6 > a {
+  color: blue;
   text-decoration: none;
   color: inherit;
 }
@@ -185,8 +193,16 @@ ol li {
   font-size: var(--fontSize-2);
 }
 
+li::marker {
+  color: var(--color-bullet);
+}
+
 li > p {
   margin-bottom: calc(var(--spacing-8) / 2);
+}
+
+li a {
+  color: var(--color-bullet-link);
 }
 
 li *:last-child {
@@ -233,7 +249,7 @@ table thead tr th {
 
 a {
   text-decoration: none;
-  color: var(--color-primary);
+  color: var(--color-link);
 }
 
 a:hover,
@@ -287,6 +303,7 @@ a:focus {
   font-family: var(--font-heading);
   text-decoration: none;
   font-size: var(--fontSize-2);
+  color: var(--color-secondary);
 }
 
 .bio {
