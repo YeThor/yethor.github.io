@@ -11,7 +11,7 @@
   --maxWidth-3xl: 48rem;
   --maxWidth-4xl: 56rem;
   --maxWidth-full: "100%";
-  --maxWidth-wrapper: var(--maxWidth-2xl);
+  --maxWidth-wrapper: var(--maxWidth-4xl);
   --spacing-px: "1px";
   --spacing-0: 0;
   --spacing-1: 0.25rem;
@@ -62,9 +62,8 @@
   --color-heading: #ffffff;
   --color-heading-black: white;
   --color-accent: #d1dce5;
-  --color-link: #5a94c4;
+  --color-link: rgb(234, 196, 100);
   --color-bullet: darkgoldenrod;
-  --color-bullet-link: rgb(234, 196, 100);
 
   --background-color: rgb(53, 54, 58);
 }
@@ -200,10 +199,6 @@ li::marker {
 
 li > p {
   margin-bottom: calc(var(--spacing-8) / 2);
-}
-
-li a {
-  color: var(--color-bullet-link);
 }
 
 li *:last-child {
