@@ -119,5 +119,20 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-omni-font-loader`,
+      options: {
+        preconnect: [
+          "https://fonts.googleapis.com",
+          "https://fonts.gstatic.com",
+        ],
+        web: [
+          {
+            name: "Nanum Gothic Coding",
+            file: "https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400",
+          },
+        ],
+      },
+    },
   ],
 }
