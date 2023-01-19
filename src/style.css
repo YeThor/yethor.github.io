@@ -34,6 +34,7 @@
   --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
     Times, serif;
   --font-body: var(--fontFamily-nanum);
+  --font-footer: var(--fontFamily-sans);
   --font-heading: var(--fontFamily-sans);
   --fontWeight-normal: 400;
   --fontWeight-medium: 500;
@@ -92,6 +93,7 @@ body {
 
 footer {
   padding: var(--spacing-6) var(--spacing-0);
+  font-family: var(--font-footer);
 }
 
 hr {
@@ -346,4 +348,8 @@ a:focus {
   ol {
     list-style-position: inside;
   }
+}
+
+.date {
+  font-family: var(--fontFamily-sans);
 }
