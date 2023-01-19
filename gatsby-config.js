@@ -128,8 +128,8 @@ module.exports = {
         ],
         web: [
           {
-            name: "Nanum Gothic Coding",
-            file: "https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400",
+            name: "Nanum Gothic",
+            file: "https://fonts.googleapis.com/css?family=Nanum+Gothic:400",
           },
         ],
       },
