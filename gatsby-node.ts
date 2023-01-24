@@ -1,13 +1,13 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
-const _ = require(`lodash`);
+import _ from "lodash";
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   // Define a template for blog post
-  const blogPost = path.resolve(`./src/templates/blog-post.js`);
-  const tagTemplate = path.resolve(`./src/templates/tags.js`);
+  const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
+  const tagTemplate = path.resolve(`./src/templates/tags.tsx`);
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -99,7 +99,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
 
   // Explicitly define the siteMetadata {} object
-  // This way those will always be defined even if removed from gatsby-config.js
+  // This way those will always be defined even if removed from gatsby-config.ts
 
   // Also explicitly define the Markdown frontmatter
   // This way the "MarkdownRemark" queries will return `null` even when no
