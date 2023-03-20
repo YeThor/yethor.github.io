@@ -2,7 +2,7 @@
 title: "VS Code가 당신의 타입을 자동완성시키지 못할 때"
 date: "2023-03-21T21:55:00"
 description: "타입 정보가 존재하는 객체를 분해 할당할 때 자동 완성이 제대로 되지 않는다면 Visual Studio Code를 의심해보자"
-tags: ["JS", "TypeScript"]
+tags: ["JS"]
 ---
 
 모처럼 새로 산 맥북을 가지고 즐겁게 개발환경을 세팅하던 날이었다.
