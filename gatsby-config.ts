@@ -52,9 +52,12 @@ module.exports = {
           },
           `gatsby-remark-autolink-headers`,
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: `gatsby-remark-vscode`,
             options: {
-              inlineCodeMarker: "±",
+              theme: "Dark+ (default dark)",
+              inlineCode: {
+                marker: `≤≥`,
+              },
             },
           },
           `gatsby-remark-copy-linked-files`,

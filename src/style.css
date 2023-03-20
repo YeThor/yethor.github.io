@@ -354,3 +354,37 @@ a:focus {
 .date {
   font-family: var(--fontFamily-sans);
 }
+
+pre:not([data-language=""])::before {
+  border-radius: 0 0 4px 4px;
+  color: #000;
+  font-size: 0.75rem;
+  letter-spacing: 0.075em;
+  line-height: 0.5;
+  padding: 0.25rem 0.5rem;
+  position: absolute;
+  left: 0.5rem;
+  text-align: right;
+  text-transform: uppercase;
+  top: 0;
+}
+
+pre[data-language="bash"]::before {
+  content: "bash";
+  background: hsl(167, 98%, 39%);
+}
+
+pre[data-language="jsx"]::before {
+  content: "jsx";
+  background: #61dafb;
+}
+
+pre[data-language="javascript"]::before {
+  content: "js";
+  background: #f7df1e;
+}
+
+code.dark-default-dark {
+  padding: 0.15em;
+  border-radius: 5px;
+}
