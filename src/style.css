@@ -267,6 +267,10 @@ a:focus {
   margin-bottom: var(--spacing-20);
 }
 
+.global-wrapper[data-is-root-path="true"] .author {
+  margin-bottom: var(--spacing-10);
+}
+
 .global-header {
   margin-bottom: var(--spacing-12);
 }
@@ -392,4 +396,24 @@ pre[data-language="typescript"]::before {
 code.dark-default-dark {
   padding: 0.15em;
   border-radius: 5px;
+}
+
+.dividing-point {
+  padding: 0.5em 1em;
+}
+
+.author {
+  display: flex;
+  margin-bottom: var(--spacing-10);
+}
+
+.author p {
+  margin-bottom: var(--spacing-0);
+}
+
+.author-avatar {
+  margin-right: var(--spacing-4);
+  margin-bottom: var(--spacing-0);
+  min-width: 50px;
+  border-radius: 100%;
 }
