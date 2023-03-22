@@ -15,7 +15,7 @@ type Props = {
   description?: string;
 };
 
-const Seo = ({ description = ``, lang, title, children }: Props) => {
+const SEO = ({ description = ``, lang, title, children }: Props) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -54,4 +54,4 @@ const Seo = ({ description = ``, lang, title, children }: Props) => {
   );
 };
 
-export default Seo;
+export default SEO;
