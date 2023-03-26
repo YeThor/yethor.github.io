@@ -417,3 +417,10 @@ code.dark-default-dark {
   min-width: 50px;
   border-radius: 100%;
 }
+
+p code {
+  padding: 0 0.3rem;
+  margin: 0 0.2rem;
+  border-radius: 0.3rem;
+  background-color: #616161;
+}
