@@ -435,6 +435,7 @@ p code {
   text-decoration: none;
   color: black;
   padding: 0.3rem 0.8rem;
+  margin-right: 0.5rem;
   border-radius: 0.8rem;
   background-color: #bdbdbd;
   transition: background 300ms ease;
