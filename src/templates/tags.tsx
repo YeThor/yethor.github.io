@@ -8,8 +8,6 @@ const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext;
   const { totalCount, nodes: posts } = data.allMarkdownRemark;
 
-  console.log(posts, data.allMarkdownRemark);
-
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? "" : `s`
   } tagged with "${tag}"`;
