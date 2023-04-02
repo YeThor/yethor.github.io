@@ -378,6 +378,11 @@ pre[data-language="bash"]::before {
   background: hsl(167, 98%, 39%);
 }
 
+pre[data-language="html"]::before {
+  content: "html";
+  background: #ffb74d;
+}
+
 pre[data-language="jsx"]::before {
   content: "jsx";
   background: #61dafb;
@@ -419,8 +424,8 @@ code.dark-default-dark {
 }
 
 p code {
-  padding: 0 0.3rem;
+  padding: 0.2rem 0.3rem;
   margin: 0 0.2rem;
   border-radius: 0.3rem;
-  background-color: #616161;
+  background-color: #1e1e1e;
 }
