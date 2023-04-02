@@ -2,7 +2,7 @@
 title: "isNaN( )과 Number.isNaN( )의 차이점"
 date: "2023-01-19T21:55:00"
 description: "전역 공간에서 쓰는 isNaN과 Number.isNaN의 차이점은 파라미터의 숫자형 변환 유무다. isNaN은 전달받은 파라미터를 숫자형으로 변환 후 NaN 여부를 판별하지만 Number.isNaN은 별도의 변환없이 받은 파라미터 그대로 NaN여부를 판단한다. 숫자형 변환시 예기치 않은 결과가 나올 수 있으므로 isNaN을 쓸 때는 항상 주의해서 써야한다."
-tags: ["JS"]
+tags: ["JavaScript"]
 ---
 
 전역 공간에서 쓰는 isNaN과 Number.isNaN의 가장 큰 차이점은 파라미터의 숫자형 변환 유무다. 전역에서 쓰이는 `isNaN()`은 전달받은 파라미터를 숫자형으로 변환한 후 NaN 여부를 살피고, `js≤≥Number.isNaN()`은 별도 변환없이 파라미터 그대로 NaN 여부를 판단한다.

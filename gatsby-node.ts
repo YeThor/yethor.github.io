@@ -1,6 +1,5 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
-import _ from "lodash";
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
@@ -72,7 +71,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   tags.forEach(tag => {
     createPage({
-      path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
+      path: `/tags/${tag.fieldValue.toLowerCase()}/`,
       component: tagTemplate,
       context: {
         tag: tag.fieldValue,
