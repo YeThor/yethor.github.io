@@ -1,13 +1,14 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { Link } from "gatsby";
+import _ from "lodash";
 
 const TagCollection = ({ tags }) => {
   return (
     <div>
       {tags.map(tag => (
-        <a className="tag">
+        <Link to={`/tags/${_.kebabCase(tag)}`} className="tag">
           <span>{tag}</span>
-        </a>
+        </Link>
       ))}
     </div>
   );
