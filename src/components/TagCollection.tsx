@@ -5,7 +5,7 @@ const TagCollection = ({ tags }) => {
   return (
     <div>
       {tags.map(tag => (
-        <Link to={`/tags/${tag.toLowerCase()}`} className="tag">
+        <Link to={`/tags/${tag.toLowerCase()}`} className="tag" key={tag}>
           <span>{tag}</span>
         </Link>
       ))}

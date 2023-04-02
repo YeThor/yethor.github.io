@@ -135,20 +135,5 @@ module.exports = {
         icon: `src/images/icon.png`,
       },
     },
-    {
-      resolve: `gatsby-omni-font-loader`,
-      options: {
-        preconnect: [
-          "https://fonts.googleapis.com",
-          "https://fonts.gstatic.com",
-        ],
-        web: [
-          {
-            name: "Nanum Gothic",
-            file: "https://fonts.googleapis.com/css?family=Nanum+Gothic:400",
-          },
-        ],
-      },
-    },
   ],
 };

@@ -6,7 +6,6 @@
   "author": "Yesol Kim <kysloves@naver.com>",
   "dependencies": {
     "gatsby": "^5.4.2",
-    "gatsby-omni-font-loader": "^2.0.2",
     "gatsby-plugin-feed": "^5.4.0",
     "gatsby-plugin-image": "^3.4.0",
     "gatsby-plugin-manifest": "^5.4.0",
