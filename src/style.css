@@ -429,3 +429,18 @@ p code {
   border-radius: 0.3rem;
   background-color: #1e1e1e;
 }
+
+.tag {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.8rem;
+  background-color: #bdbdbd;
+  transition: background 300ms ease;
+}
+
+a.tag:hover {
+  text-decoration: none;
+  background-color: #e0e0e0;
+}

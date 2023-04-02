@@ -2,6 +2,7 @@ import * as React from "react";
 import { Link, graphql } from "gatsby";
 
 import { Author, Bio, Layout, SEO } from "../components";
+import TagCollection from "../components/TagCollection";
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
@@ -25,6 +26,7 @@ const BlogPostTemplate = ({
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
+        <TagCollection tags={post.frontmatter.tags} />
         <hr />
         <footer>
           <Bio />
@@ -91,6 +93,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
