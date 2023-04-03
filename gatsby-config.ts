@@ -1,4 +1,6 @@
-module.exports = {
+import { GatsbyConfig } from "gatsby";
+
+const config: GatsbyConfig = {
   pathPrefix: "/",
   siteMetadata: {
     title: `Frontend Dev. Yesol`,
@@ -137,3 +139,5 @@ module.exports = {
     },
   ],
 };
+
+export default config;
