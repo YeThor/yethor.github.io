@@ -1,8 +1,16 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import { Layout, SEO } from "../components";
 
-const NotFoundPage = ({ data, location }) => {
+type DataType = {
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
+};
+
+const NotFoundPage = ({ data, location }: PageProps<DataType>) => {
   const siteTitle = data.site.siteMetadata.title;
 
   return (
@@ -13,9 +21,7 @@ const NotFoundPage = ({ data, location }) => {
   );
 };
 
-export const Head = () => {
-  return <SEO title="404: Not Found" />;
-};
+export const Head = () => <SEO title="404: Not Found" />;
 
 export default NotFoundPage;
 

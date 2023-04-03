@@ -2,7 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Helmet } from "react-helmet";
-import { Link, graphql } from "gatsby";
+import { Link, graphql, PageProps } from "gatsby";
+
+type DataType = {
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
+  allMarkdownRemark: {
+    group: {
+      fieldValue: string;
+      totalCount: number;
+    }[];
+  };
+};
 
 const TagsPage = ({
   data: {
@@ -11,7 +25,7 @@ const TagsPage = ({
       siteMetadata: { title },
     },
   },
-}) => (
+}: PageProps<DataType>) => (
   <div>
     <Helmet title={title} />
     <div>
@@ -28,24 +42,6 @@ const TagsPage = ({
     </div>
   </div>
 );
-
-TagsPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      group: PropTypes.arrayOf(
-        PropTypes.shape({
-          fieldValue: PropTypes.string.isRequired,
-          totalCount: PropTypes.number.isRequired,
-        }).isRequired
-      ),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
-    }),
-  }),
-};
 
 export default TagsPage;
 
