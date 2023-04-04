@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, graphql, PageProps } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 
 import { Bio, Layout, SEO } from "../components";
 import PostListItem from "../components/PostListItem";
