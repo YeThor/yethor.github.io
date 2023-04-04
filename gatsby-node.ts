@@ -32,8 +32,8 @@ export const createPages: GatsbyNode["createPages"] = async ({
   const { createPage } = actions;
 
   // Define a template for blog post
-  const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
-  const tagTemplate = path.resolve(`./src/templates/tags.tsx`);
+  const blogPost = path.resolve(`./src/templates/BlogPost.tsx`);
+  const tagTemplate = path.resolve(`./src/templates/Tags.tsx`);
 
   // Get all markdown blog posts sorted by date
   const result: DataType = await graphql(

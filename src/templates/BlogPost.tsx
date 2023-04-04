@@ -124,8 +124,6 @@ export const Head = ({
   );
 };
 
-export default BlogPostTemplate;
-
 export const pageQuery = graphql`
   query BlogPostBySlug(
     $id: String!
@@ -167,3 +165,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default BlogPostTemplate;
