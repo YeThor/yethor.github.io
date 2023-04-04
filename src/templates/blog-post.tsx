@@ -1,13 +1,49 @@
 import * as React from "react";
-import { Link, graphql } from "gatsby";
+import { Link, graphql, HeadProps, PageProps } from "gatsby";
 
 import { Author, Bio, Layout, SEO } from "../components";
 import TagCollection from "../components/TagCollection";
 
+type DataType = {
+  previous: {
+    fields: {
+      slug: string;
+    };
+    frontmatter: {
+      title: string;
+    };
+  };
+  next: {
+    fields: {
+      slug: string;
+    };
+    frontmatter: {
+      title: string;
+    };
+  };
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
+  markdownRemark: {
+    id: string;
+    excerpt: string;
+    html: string;
+    timeToRead: number;
+    frontmatter: {
+      title: string;
+      date: string;
+      description: string;
+      tags: string;
+    };
+  };
+};
+
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
   location,
-}) => {
+}: PageProps<DataType>) => {
   const siteTitle = site.siteMetadata?.title || `Title`;
 
   return (
@@ -62,7 +98,24 @@ const BlogPostTemplate = ({
   );
 };
 
-export const Head = ({ data: { markdownRemark: post } }) => {
+type HeadDataType = {
+  markdownRemark: {
+    id: string;
+    excerpt: string;
+    html: string;
+    timeToRead: number;
+    frontmatter: {
+      title: string;
+      date: string;
+      description: string;
+      tags: string;
+    };
+  };
+};
+
+export const Head = ({
+  data: { markdownRemark: post },
+}: HeadProps<Pick<DataType, "markdownRemark">>) => {
   return (
     <SEO
       title={post.frontmatter.title}

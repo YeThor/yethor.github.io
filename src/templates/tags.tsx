@@ -1,10 +1,39 @@
 import React from "react";
 
-import { Link, graphql } from "gatsby";
+import { Link, graphql, PageProps } from "gatsby";
 import PostListItem from "../components/PostListItem";
 import { Layout } from "../components";
 
-const Tags = ({ pageContext, data, location }) => {
+type DataType = {
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
+  allMarkdownRemark: {
+    totalCount: number;
+    nodes: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+        description: string;
+        date: string;
+      };
+    }[];
+  };
+};
+
+type PageContextType = {
+  tag: string;
+};
+
+const Tags = ({
+  pageContext,
+  data,
+  location,
+}: PageProps<DataType, PageContextType>) => {
   const { tag } = pageContext;
   const { totalCount, nodes: posts } = data.allMarkdownRemark;
 
