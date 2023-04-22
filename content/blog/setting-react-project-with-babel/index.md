@@ -207,3 +207,70 @@ export default App;
 
 + createRoot(document.getElementById("app")).render(<App />);
 ```
+
+## 코드 변환은 Babel의 몫으로 
+
+앞서 리액트를 세팅하면서 바벨 모듈과 설정 파일을 추가했었다. 하지만 우리가 한 것은 단순히 리액트 JSX 문법을 자바스크립트 코드로 변환한 것 뿐이다. 소스 코드에서 사용한 ES6 이상의 최신 자바스크립트 문법을 구형 브라우저에서도 구동되게끔 하려면 다음과 같은 작업이 필요하다.
+
+- ES6 이상의 문법을 ES5 이하의 문법으로 변환
+  - 최신 문법이 오래된 문법으로 대체된다. 예를 들어 화살표 함수의 경우에는 다음처럼 코드가 변환될 것이다.
+  - ```javascript
+    // ES6
+    const foo = () => console.log('hello world');
+
+    // ES5 
+    function foo() {
+      console.log('hello world');
+    }
+    ```
+- ES6 이상에서 새롭게 추가된 스펙에 대한 폴리필  
+  - ES6이상에서 완전히 새롭게 추가된 스펙이라면 어떨까? 다시 말해 ES5에서는 전혀 존재하지 않았던 스펙이라면, 위의 경우와 달리 ES6 스펙을 ES5 문법으로 온전히 재창조(recreate)해야할 것이다. 이것을 폴리필(polyfill)이라고 부른다. 
+  - `Promise`, `js≤≥Array.prototype.find` 등이 대표적인 예시.
+
+위 목적을 달성하는 데에는 크게 두가지 방법이 있다. 하나는 타입스크립트에게 코드 변환을 맡기는 것(`tsc`), 다른 하나는 바벨에게 코드 변환을 맡기는 것이다. 
+
+`tsc`를 사용하면 컴파일 과정에서 타입 체크를 엄격하게 수행할 수 있다. 소스 코드 어디선가 타입 에러가 있다면, 코드는 컴파일되지 않을 것이고 개발자는 잠재적인 에러를 잡아낼 수 있을 것이다. 하지만 그 외의 것들, 예를 들면 폴리필 추가나 라이브 리로딩같은 기능을 사용하는게 불편하다(라이브 리로딩을 공식지원하지는 않지만 tricky하게 설정을 바꿔서 억지로 쓸 수는 있다). 바벨은 이와 정반대의 장단점을 가진다. 원래 바벨이 호환성 지원을 위한 진영인만큼, 관련 기능과 플러그인들이 잘 구현되어있어 편하게 폴리필을 추가하고 코드를 변환할 수 있다. 다만 컴파일 과정에서 타입 체크는 수행하지 않는다. 
+
+이 아티클에서는 바벨을 사용한다. 그 이유는 바벨이 버전7 이후부터 타입스크립트를 잘 지원하고 있을 뿐만 아니라, 관심사를 기준으로 봤을 때 타입스크립트는 타입 체크, 바벨은 코드 호환성 유지에 제 1목적을 두고 있기 때문이다. [타입스크립트 10주년 회고글](https://devblogs.microsoft.com/typescript/ten-years-of-typescript/)에서도 `"타입스크립트는 타입에 집중하고, 그 외의 기능은 웹 개발 생태계에게 맡긴다"`는 논지의 글을 볼 수 있다. 
+
+> Another successful principle is that **TypeScript hasn’t tried to be every tool in the toolbox.** One of our non goals is to not "provide an end-to-end build pipeline. Instead, make the system extensible so that external tools can use the compiler for more complex build workflows." - Ten Years of TypeScript, by Daniel Rosenwasser
+
+그렇다고 tsc를 아예 배제하자는 것은 아니다. 이 프로젝트 세팅에서 코드 변환은 바벨에게 맡기겠지만, 그 전에 `tsc`로 하여금 타입 체크를 수행시키는 전과정을 추가시켜 잠재적인 에러를 잡아낼 것이다.
+
+일단은 다시 본론으로 돌아가서, 구형 브라우저 지원을 위한 관련 모듈을 설치하자.
+
+```bash
+npm install -D @babel/preset-env core-js
+```
+
+- core-js는 최신 ECMAScript 문법에 대한 폴리필을 포함하고 있는 라이브러리로, 필요한 폴리필만 추가하거나 전역 네임스페이스 오염없이 폴리필을 가져올 수 있는 라이브러리다. 
+- @babel/preset-env는 최신 자바스크립트 문법을 구형 브라우저에서도 동작하도록 변환시켜주는 프리셋이다. `useBuiltIns` 옵션을 `entry`나 `usage`로 설정하면 core-js 모듈에 대한 직접 참조를 추가하기 때문에 core-js의 폴리필을 사용할 수 있게 된다. `corejs` 옵션을 설정하면 어떤 버전의 core-js 모듈을 사용할지 설정할 수 있다.
+  - @babel/polyfill은 7.4.0 이후로 deprecated되었으므로 위 방식으로 폴리필을 추가하는 것을 추천한다.
+
+다음처럼 바벨 설정 파일을 수정해주자.
+
+```json {diff}
+{
+-  "presets": ["@babel/preset-react"]
++  "presets": [
++    [
++      "@babel/preset-env",
++      {
++        "useBuiltIns": "usage", 
++        "corejs": 3
++      }
++    ],
++    "@babel/preset-react"
++  ]
+}
+```
+
+바벨의 preset 옵션은 배열 역순으로 적용된다. 즉, @babel/preset-react가 먼저 적용되어 리액트가 자바스크립트로 변환되고, 변환된 자바스크립트를 @babl/preset-env가 구형 브라우저에서 동작하는 자바스크립트 코드로 변환한다. 폴리필이 필요한 경우 소스 코드에 사용된("usage") 부분만 core-js 버전 3에서 가져오며, 타겟 환경은 `.browserlistrc` 파일이나 `targets` 옵션으로 구체화시킬 수 있다. 
+
+```
+// .browserlistrc
+> 0.25%
+not dead
+```
+
+## TypeScript 추가하기 
