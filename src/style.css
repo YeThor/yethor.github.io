@@ -27,14 +27,16 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
+  --fontFamily-system: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
   --fontFamily-sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
     Times, serif;
-  --font-body: var(--fontFamily-sans);
-  --font-footer: var(--fontFamily-sans);
-  --font-heading: var(--fontFamily-sans);
+  --font-footer: var(--fontFamily-system);
+  --font-heading: var(--fontFamily-system);
   --fontWeight-normal: 400;
   --fontWeight-medium: 500;
   --fontWeight-semibold: 600;
@@ -84,7 +86,7 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--fontFamily-system);
   font-size: var(--fontSize-1);
   color: var(--color-text);
   background-color: var(--background-color);
@@ -355,7 +357,7 @@ a:focus {
 }
 
 .date {
-  font-family: var(--fontFamily-sans);
+  font-family: var(--fontFamily-system);
 }
 
 pre:not([data-language=""])::before {
