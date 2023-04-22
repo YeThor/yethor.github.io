@@ -360,6 +360,10 @@ a:focus {
   font-family: var(--fontFamily-system);
 }
 
+li pre {
+  font-size: 1rem;
+}
+
 pre:not([data-language=""])::before {
   border-radius: 0 0 4px 4px;
   color: #000;
@@ -424,11 +428,19 @@ code.dark-default-dark {
   border-radius: 100%;
 }
 
+code {
+  border-radius: 0.3rem;
+  background-color: #1e1e1e;
+}
+
 p code {
   padding: 0.2rem 0.3rem;
   margin: 0 0.2rem;
-  border-radius: 0.3rem;
-  background-color: #1e1e1e;
+}
+
+li code {
+  padding: 0.1rem 0.3rem;
+  margin: 0 0.1rem;
 }
 
 .tag {
