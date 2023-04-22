@@ -68,6 +68,8 @@
   --color-bullet: darkgoldenrod;
 
   --background-color: rgb(53, 54, 58);
+
+  --grvsc-line-diff-add-background-color: rgba(55, 144, 82, 0.154);
 }
 
 /* HTML elements */
