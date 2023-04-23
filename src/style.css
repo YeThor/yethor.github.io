@@ -376,17 +376,16 @@ pre:not([data-language=""])::before {
   position: absolute;
   left: 0.5rem;
   text-align: right;
-  text-transform: uppercase;
   top: 0;
 }
 
 pre[data-language="bash"]::before {
-  content: "bash";
+  content: "Bash";
   background: hsl(167, 98%, 39%);
 }
 
 pre[data-language="html"]::before {
-  content: "html";
+  content: "HTML";
   background: #ffb74d;
 }
 
@@ -396,17 +395,22 @@ pre[data-language="jsx"]::before {
 }
 
 pre[data-language="javascript"]::before {
-  content: "js";
+  content: "JS";
   background: #f7df1e;
 }
 
 pre[data-language="typescript"]::before {
-  content: "ts";
+  content: "TS";
   background: #7986cb;
 }
 
+pre[data-language="tsx"]::before {
+  content: "tsx";
+  background: #5569d0;
+}
+
 pre[data-language="json"]::before {
-  content: "json";
+  content: "JSON";
   background: gray;
 }
 
