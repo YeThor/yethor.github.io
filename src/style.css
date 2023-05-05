@@ -189,7 +189,6 @@ ol {
   margin-bottom: var(--spacing-8);
   list-style-position: outside;
   list-style-image: none;
-  padding-inline-start: var(--spacing-8);
 }
 
 ul li,
@@ -209,11 +208,6 @@ li > p {
 
 li *:last-child {
   margin-bottom: var(--spacing-0);
-}
-
-li > ul,
-li > ol {
-  margin-top: calc(var(--spacing-8) / 2);
 }
 
 blockquote {
@@ -340,6 +334,16 @@ a:focus {
 
 .blog-post-nav ul {
   margin: var(--spacing-0);
+}
+
+.blog-post ul,
+.blog-post ol {
+  padding-inline-start: var(--spacing-8);
+}
+
+.blog-post li > ul,
+.blog-post li > ol {
+  margin-top: calc(var(--spacing-8) / 2);
 }
 
 .gatsby-highlight {
