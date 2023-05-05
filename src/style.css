@@ -462,35 +462,11 @@ li code {
   margin-right: 0.5rem;
   border-radius: 0.8rem;
   background-color: #bdbdbd;
-  transition: background 300ms ease;
+  transition: background-color 300ms ease;
+  vertical-align: middle;
 }
 
 a.tag:hover {
   text-decoration: none;
   background-color: #e0e0e0;
-}
-
-.tag-icon {
-  display: inline-block;
-  margin-top: 5px;
-  position: relative;
-  border: 2px solid var(--color-secondary);
-  margin-right: 15px;
-  border-right: 0;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  width: 20px;
-  height: 18px;
-}
-
-.tag-icon::after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-top: 2px solid var(--color-secondary);
-  border-right: 2px solid var(--color-secondary);
-  transform: rotate(-135deg);
-  top: 1px;
-  left: 12px;
 }
