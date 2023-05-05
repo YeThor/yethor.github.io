@@ -35,10 +35,15 @@ const Author = ({ timeToRead, date }: Props) => {
         alt="Profile picture"
       />
       <div>
-        <p>{author.name}</p>
+        <p>
+          <span className="material-icons">person</span>
+          <span>{author.name}</span>
+        </p>
         <div>
+          <span className="material-icons">access_time</span>
           <span>{timeToRead} min </span>
           <span className="dividing-point">·</span>
+          <span className="material-icons">calendar_month</span>
           <span>{date}</span>
         </div>
       </div>
