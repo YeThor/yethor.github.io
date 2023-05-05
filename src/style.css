@@ -189,7 +189,7 @@ ol {
   margin-bottom: var(--spacing-8);
   list-style-position: outside;
   list-style-image: none;
-  padding-inline-start: var(--spacing-0);
+  padding-inline-start: var(--spacing-8);
 }
 
 ul li,
@@ -211,8 +211,8 @@ li *:last-child {
   margin-bottom: var(--spacing-0);
 }
 
-li > ul {
-  margin-left: var(--spacing-8);
+li > ul,
+li > ol {
   margin-top: calc(var(--spacing-8) / 2);
 }
 

@@ -29,8 +29,8 @@ const Author = ({ timeToRead, date }: Props) => {
         layout="fixed"
         formats={["auto", "webp", "avif"]}
         src="../images/profile-pic.jpeg"
-        width={50}
-        height={50}
+        width={53}
+        height={53}
         quality={95}
         alt="Profile picture"
       />
