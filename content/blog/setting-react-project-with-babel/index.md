@@ -243,9 +243,9 @@ export default App;
 npm install -D @babel/preset-env core-js
 ```
 
-- core-js는 최신 ECMAScript 문법에 대한 폴리필을 포함하고 있는 라이브러리로, 필요한 폴리필만 추가하거나 전역 네임스페이스 오염없이 폴리필을 가져올 수 있는 라이브러리다. 
-- @babel/preset-env는 최신 JavaScript 문법을 구형 브라우저에서도 동작하도록 변환시켜주는 프리셋이다. `useBuiltIns` 옵션을 `entry`나 `usage`로 설정하면 core-js 모듈에 대한 직접 참조를 추가하기 때문에 core-js의 폴리필을 사용할 수 있게 된다. `corejs` 옵션을 설정하면 어떤 버전의 core-js 모듈을 사용할지 설정할 수 있다.
-  - @babel/polyfill은 7.4.0 이후로 deprecated되었으므로 위 방식으로 폴리필을 추가하는 것을 추천한다.
+- core-js는 최신 ECMAScript 문법에 대한 폴리필을 포함하고 있는 라이브러리로, 방식에 따라 필요한 폴리필만 추가하거나 전역 네임스페이스 오염없이 폴리필을 가져올 수 있다.  
+- @babel/preset-env는 최신 JavaScript 문법을 구형 브라우저에서도 동작하도록 변환시켜주는 프리셋이다. `useBuiltIns` 옵션을 `entry`나 `usage`로 설정하면 core-js 모듈에 대한 직접 참조를 추가하기 때문에 core-js의 폴리필을 사용할 수 있게 된다. `corejs` 옵션을 설정하면 어떤 버전의 core-js 모듈을 사용할지 설정할 수 있다. 다만 이 설정을 사용하면 전역 네임스페이스에 corejs를 추가하는 셈이기 때문에, 프로젝트가 라이브러리일 경우 다른 모듈에서 가져온 core-js 모듈과 전역에서 충돌이 생길 수 있다. 이 프로젝트의 범위는 페이지 전체이기 때문에 상관없지만, 라이브러리이거나 다른 모듈과 함께 사용되는 경우라면 `@babel/plugin-transform-runtime`을 사용하자. 더 자세한 것은 [jeff님이 작성하신 카카오 기술 블로그](https://tech.kakao.com/2020/12/01/frontend-growth-02/)에 아주 잘 설명되어있으니 한번씩 읽어보는 것을 추천한다 :) 
+  - @babel/polyfill은 7.4.0 이후로 deprecated 되어서 더이상 사용하지 않는다
 
 다음처럼 Babel 설정 파일을 수정해주자.
 
