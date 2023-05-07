@@ -3,7 +3,7 @@ import { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   pathPrefix: "/",
   siteMetadata: {
-    title: `Frontend Dev. Yesol`,
+    title: `Trivial, but NOT trivial`,
     author: {
       name: `Yesol Kim`,
       summary: `who is a big fan of React and TypeScript.`,
@@ -118,7 +118,7 @@ const config: GatsbyConfig = {
               }
             `,
             output: "/rss.xml",
-            title: "Frontend Dev.Yesol RSS Feed",
+            title: "Trivial, but NOT trivial RSS Feed",
           },
         ],
       },
@@ -126,7 +126,7 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Frontend Dev.Yesol`,
+        name: `Trivial, but NOT trivial`,
         short_name: `Dev.Yesol`,
         start_url: `/`,
         background_color: `#ffffff`,
