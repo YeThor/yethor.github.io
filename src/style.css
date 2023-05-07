@@ -10,6 +10,7 @@
   --maxWidth-2xl: 42rem;
   --maxWidth-3xl: 48rem;
   --maxWidth-4xl: 56rem;
+  --maxWidth-5xl: 72rem;
   --maxWidth-full: "100%";
   --maxWidth-wrapper: var(--maxWidth-4xl);
   --spacing-px: "1px";
@@ -257,8 +258,15 @@ a:focus {
 
 .global-wrapper {
   margin: var(--spacing-0) auto;
-  max-width: var(--maxWidth-wrapper);
   padding: var(--spacing-10) var(--spacing-5);
+}
+
+.global-wrapper[data-is-root-path="true"] {
+  max-width: var(--maxWidth-4xl);
+}
+
+.global-wrapper[data-is-root-path="false"] {
+  max-width: var(--maxWidth-5xl);
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {
