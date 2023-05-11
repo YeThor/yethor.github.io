@@ -22,4 +22,10 @@ CSS로 표현되는 모든 것은 박스 형태다. `border-radius`를 이용해
 
 내적 사이징을 쓴다는 것은 브라우저로 하여금 박스의 컨텐츠 사이즈에 기반해 알아서 판단하도록 한다는 것이다. 외적 사이징이 표면에 대한 더 많은 제어권을 준다면 내적 사이징은 더 많은 유연함을 준다고 할 수 있다.
 
-## the areas of the box model 부터
+## the areas of the box model
+
+박스는 확연하게 구분된 영역을 가진다
+- Margin box
+- Border box : `border` 속성에 의해 만들어진 공간으로, 패딩 박스를 감싸고 있음. 요소의 프레임을 시각화하고 싶을때 `border` 속성을 이용할 수 있다.  
+- Padding box : `padding` 속성에 의해 만들어진 공간으로, 컨텐츠 박스를 감싸고 있음. `overflow: auto` 혹은 `overflow: scroll` 같은 overflow 속성이 있으면, 스크롤 바 영역 또한 padding 영역에 추가됨. 
+- Content box : 컨텐츠가 존재하는 영역. 컨텐츠의 크기에 따라 부모 박스 크기에 영향을 미칠 수 있음. 
