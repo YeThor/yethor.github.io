@@ -8,15 +8,15 @@ tags: ["JavaScript", "Algorithms"]
 ## Concept  
 
 
-**Dynamic Programming** is more than an algorithm, it's an optimization technique over plain recursion problems. It breaks down the main problem to the smaller subproblems, and stores the partial solutions, reuses them when they needed to solve the main problem. Since there is no recursive calls, it saves memory usage caused by the call stack. Also the time complexity becomes polynomial because it simply look up the table(array, object) that stores solutions of subproblems.
+**Dynamic Programming** is more than an algorithm, it's an optimization technique over plain recursion problems. It breaks down the main problem to the smaller subproblems, and stores the partial solutions, reuses them when they are needed to solve the main problem. Since there is no recursive calls, it saves memory usage caused by call stack. Also the time complexity becomes polynomial because it simply looks up the table(array, object) that stores solutions of subproblems.
 
 ![The main concept](./index.png)
 
 
 
-## DP optimizes recursion
+## Dynamic Programming optimizes recursion
 
-The following code is an implementation of the [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_sequence) problem using recursion and dynamic programming approaches respectively.
+The following code is an implementation of the [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_sequence) problem using recursion and dynamic programming approache, respectively.
 
 ```typescript
 // Recursion
@@ -43,18 +43,18 @@ function fibo(n:number):number {
 }
 ```
 
-The solution using recursion have to call and execute itself until `n` becomes 1. Since it calls itself `2^n` times, it has exponential time complexity, `O(2^n)`. On the other hand, the solution using dynamic programming solve subproblems and save the partial solution iteratively. So the time complexity becomes a polynomial, `O(n)`. This is the one of examples that dynamic programming optimizes recursion problems.
+The solution using recursion has to call and execute itself until `n` becomes 1. Since it calls itself `2^n` times, it has exponential time complexity, `O(2^n)`. On the other hand, the solution using dynamic programming solves subproblems iteratively, stores the partial solutions and reuses them without recomputation. So the time complexity becomes a polynomial, `O(n)`. This is the one of examples that dynamic programming optimizes the recursion problems.
 
 
 ## What can be solved by dynamic programming approach?
 
-Not all recursive problems can be solved by dynamic programming. There are two necessary conditions.
+Not all recursive problems can be solved by dynamic programming. There are two necessary conditions, overlapping subproblems and optimal substructure.
 
 ### 1. Overlapping Subproblems
 
-When the solution to the same subproblem is needed more than once to solve the main problem, we say the problem has overlapping subproblems. In the previously explained Fibonacci problem, the answer of `f(3)` is needed when you get the answer for `f(4)` and `f(5)`. 
+When the solution to the same subproblem is needed more than once to solve the main problem, we say the problem has overlapping subproblems. In the previously explained Fibonacci problem above, the answer of `f(3)` is needed when you get the answer for `f(4)` and `f(5)`. 
 
-In other words, a binary search problem can't be solved by dynamic programming since all of the subproblems has an unique array to find an answer. So it uses divide and conquer technique.
+In other words, a binary search problem can't be solved by dynamic programming since all of the subproblems has an unique array to find an answer. So it uses divide and conquer technique, not dynamic programming.
 
 ### 2. Optimal Substructure
 
