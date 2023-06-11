@@ -3,7 +3,7 @@ import { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   pathPrefix: "/",
   siteMetadata: {
-    title: `Trivial, but NOT trivial`,
+    title: `Nothing is trivial`,
     author: {
       name: `Yesol Kim`,
       summary: `who is a big fan of React and TypeScript.`,
@@ -124,7 +124,7 @@ const config: GatsbyConfig = {
               }
             `,
             output: "/rss.xml",
-            title: "Trivial, but NOT trivial RSS Feed",
+            title: "Nothing is trivial RSS Feed",
           },
         ],
       },
@@ -132,7 +132,7 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Trivial, but NOT trivial`,
+        name: `Nothing is trivial`,
         short_name: `Dev.Yesol`,
         start_url: `/`,
         background_color: `#ffffff`,
